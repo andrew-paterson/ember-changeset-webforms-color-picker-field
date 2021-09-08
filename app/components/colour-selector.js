@@ -1,0 +1,1 @@
+export { default } from 'ember-changeset-webforms-color-picker-field/components/colour-selector';

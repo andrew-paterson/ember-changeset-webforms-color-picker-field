@@ -1,0 +1,27 @@
+
+<div class="field-controls bg-white rounded border border-2px padding-lg">
+  {{#if displayValue}}
+    <div class="margin-bottom-lg">
+      Current: <EmberSkeleton::DynamicColourBadge @text={{displayValue}} @background={{displayValue}} />
+    </div>
+  {{/if}}
+  <div class="flex flex-justify-space-between flex-align-center margin-bottom-lg border-bottom padding-bottom-lg">
+    <button type="button" class="btn-content" {{action "toggleCustomColours" false}}>
+      {{#unless selectCustomColour}}<SvgRepo::Icons::IconTick @class="fill-gray-medium width-lg margin-right-md" />{{/unless}}Swatches
+    </button>
+    <button type="button" class="btn-content" {{action "toggleCustomColours" true}}>
+       {{#if selectCustomColour}}<SvgRepo::Icons::IconTick @class="fill-gray-medium width-lg margin-right-md" />{{/if}}Custom colours
+    </button>
+  </div>
+  {{#if selectCustomColour}}
+    <ColPick @value={{displayValue}} @click={{action onUserInteraction formField displayValue}} @colorScheme="light" />
+  {{else}}
+    <div class="swatches">
+      {{#each swatchColours as | swatchColourRow |}}
+        {{#each swatchColourRow as | swatchColour |}}
+          <Athena::CustomFormFields::ColourSwatch @swatchColour={{swatchColour}} @selected={{eq swatchColour displayValue}} @click={{action onUserInteraction formField swatchColour}} data-test-class="colour-swatch" data-test-id="swatch-{{swatchColour}}" />
+        {{/each}}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
