@@ -19,7 +19,7 @@
     <div class="swatches">
       {{#each swatchColours as | swatchColourRow |}}
         {{#each swatchColourRow as | swatchColour |}}
-          <Athena::CustomFormFields::ColourSwatch @swatchColour={{swatchColour}} @selected={{eq swatchColour displayValue}} @click={{action onUserInteraction formField swatchColour}} data-test-class="colour-swatch" data-test-id="swatch-{{swatchColour}}" />
+          <ColourSwatch @swatchColour={{swatchColour}} @selected={{eq swatchColour displayValue}} @click={{action onUserInteraction formField swatchColour}} data-test-class="colour-swatch" data-test-id="swatch-{{swatchColour}}" />
         {{/each}}
       {{/each}}
     </div>
